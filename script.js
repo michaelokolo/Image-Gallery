@@ -1,6 +1,9 @@
 const imageWrapper = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
 const searchInput = document.querySelector('.search-box input');
+const lightBox = document.querySelector('.lightbox');
+const closeBtn = document.querySelector('.uil-times');
+const downloadImgBtn = lightBox.querySelector('.uil-import');
 
 // Pexels API key
 const apiKey = 'TYDuclkjPcP9tjSLNZp1Qx8qvGXdHnBj9m0lxoi0nb6QdZ2MWQN6jaI1';
@@ -22,19 +25,34 @@ const downloadImg = (imgUrl) => {
     .catch(() => alert('Failed to download image'));
 };
 
+const showLightbox = (name, img, alt) => {
+  // Show the lightbox when the user clicks on an image
+  lightBox.querySelector('img').src = img;
+  lightBox.querySelector('img').alt = alt;
+  lightBox.querySelector('span').innerText = name;
+  downloadImgBtn.setAttribute('data-img', img);
+  lightBox.classList.add('show');
+  document.body.style.overflow = 'hidden';
+};
+
+const hideLightbox = () => {
+  lightBox.classList.remove('show');
+  document.body.style.overflow = 'auto';
+};
+
 const generateHTML = (images) => {
   // Append images to the gallery
   imageWrapper.innerHTML += images
     .map(
       (img) =>
-        `<div class="card">
+        `<div class="card" onclick="showLightbox('${img.photographer}','${img.src.large}', '${img.alt}')">
         <img src="${img.src.large}" alt="${img.alt}" loading="lazy" />
         <div class="details">
           <div class="photographer">
             <i class="uil uil-camera"></i>
             <span>${img.photographer}</span>
           </div>
-          <button onclick=downloadImg("${img.src.large}")>
+          <button onclick=downloadImg("${img.src.large}");event.stopPropagation();>
                 <i class="uil uil-import"></i>
             </button>
         </div>
@@ -103,3 +121,7 @@ const loadSearchImages = (e) => {
 
 loadMoreBtn.addEventListener('click', loadMoreImages);
 searchInput.addEventListener('keyup', loadSearchImages);
+closeBtn.addEventListener('click', hideLightbox);
+downloadImgBtn.addEventListener('click', (e) =>
+  downloadImg(e.target.dataset.img)
+);

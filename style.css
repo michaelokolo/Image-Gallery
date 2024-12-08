@@ -85,6 +85,7 @@ i {
   position: relative;
   display: flex;
   overflow: hidden;
+  cursor: pointer;
 }
 .gallery .card .details {
   position: absolute;
@@ -185,7 +186,9 @@ i {
   display: none;
   background: rgba(0, 0, 0, 0.65);
 }
-
+.lightbox.show {
+  display: block;
+}
 .lightbox .wrapper {
   position: absolute;
   left: 50%;
