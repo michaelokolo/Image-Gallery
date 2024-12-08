@@ -9,6 +9,19 @@ const perPage = 20;
 let currentPage = 1;
 let searchTerm = 'nature';
 
+const downloadImg = (imgUrl) => {
+  // Download the image when the user clicks the download button
+  fetch(imgUrl)
+    .then((response) => response.blob())
+    .then((file) => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(file);
+      a.download = new Date().getTime();
+      a.click();
+    })
+    .catch(() => alert('Failed to download image'));
+};
+
 const generateHTML = (images) => {
   // Append images to the gallery
   imageWrapper.innerHTML += images
@@ -21,7 +34,9 @@ const generateHTML = (images) => {
             <i class="uil uil-camera"></i>
             <span>${img.photographer}</span>
           </div>
-          <button><i class="uil uil-import"></i></button>
+          <button onclick=downloadImg("${img.src.large}")>
+                <i class="uil uil-import"></i>
+            </button>
         </div>
         <div class="like-collection">
           <button><i class="uil uil-heart-alt"></i></button>
@@ -76,9 +91,9 @@ getImages(
 
 const loadSearchImages = (e) => {
   // Load images when the user searches for a term
-  if (e.key === 'Enter' && searchInput.value !== '') {
+  if (e.key === 'Enter') {
     currentPage = 1;
-    searchTerm = e.target.value;
+    searchTerm = e.target.value || 'nature';
     imageWrapper.innerHTML = '';
     getImages(
       `https://api.pexels.com/v1/search?query=${searchTerm}&page=${currentPage}&orientation=square&size=large&per_page=${perPage}`
