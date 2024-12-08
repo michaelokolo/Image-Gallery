@@ -21,8 +21,33 @@
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
     />
+    <script src="script.js" defer></script>
   </head>
   <body>
+    <!--light box start-->
+    <div class="lightbox">
+      <div class="wrapper">
+        <header>
+          <div class="photographer">
+            <i class="uil uil-camera"></i>
+            <span>Maria Loznevaya</span>
+          </div>
+          <div class="buttons">
+            <i class="uil uil-folder-open"></i>
+            <i class="uil uil-heart-alt"></i>
+            <i class="uil uil-import"></i>
+            <i class="uil uil-times"></i>
+          </div>
+        </header>
+        <div class="preview-img">
+          <div class="img">
+            <img src="images/img-3.jpg" alt="preview-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--light box end-->
+
     <!--Hero Section start-->
     <header class="image-gallery-hero">
       <img
@@ -48,34 +73,7 @@
     </header>
     <!--Hero Section end-->
 
-    <section class="gallery">
-      <div class="card">
-        <img src="images/img-1.jpg" alt="img" loading="lazy" />
-        <div class="details">
-          <div class="photographer">
-            <i class="uil uil-camera"></i>
-            <span>Maria Loznevaya</span>
-          </div>
-          <button><i class="uil uil-import"></i></button>
-        </div>
-        <div class="like-collection">
-          <button><i class="uil uil-heart-alt"></i></button>
-          <button><i class="uil uil-folder-open"></i></button>
-        </div>
-      </div>
-
-      <img src="images/img-2.jpg" alt="img" loading="lazy" />
-      <img src="images/img-3.jpg" alt="img" loading="lazy" />
-      <img src="images/img-4.jpg" alt="img" loading="lazy" />
-      <img src="images/img-5.jpg" alt="img" loading="lazy" />
-      <img src="images/img-6.jpg" alt="img" loading="lazy" />
-      <img src="images/img-7.jpg" alt="img" loading="lazy" />
-      <img src="images/img-8.jpg" alt="img" loading="lazy" />
-      <img src="images/img-9.jpg" alt="img" loading="lazy" />
-      <img src="images/img-10.jpg" alt="img" loading="lazy" />
-      <img src="images/img-11.jpg" alt="img" loading="lazy" />
-      <img src="images/img-12.jpg" alt="img" loading="lazy" />
-    </section>
+    <section class="gallery"></section>
     <div class="button-container">
       <button class="load-more">Load More</button>
     </div>

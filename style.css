@@ -100,12 +100,12 @@ i {
 .gallery .card:hover .details {
   bottom: 0;
 }
-.card .details .photographer {
+.photographer {
   color: #fff;
   display: flex;
   align-items: center;
 }
-.details .photographer i {
+.photographer i {
   font-size: 1.4rem;
   margin-right: 10px;
 }
@@ -158,18 +158,108 @@ i {
   font-size: 1.2rem;
   padding: 10px 20px;
   background-color: #007bff;
-  background-image: linear-gradient(to bottom right, purple, #007bff);
+  background: linear-gradient(to bottom right, purple, #007bff);
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s ease-in-out;
 }
+.button-container .load-more.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 .button-container .load-more:hover {
-  background-color: linear-gradient(to bottom right, #0056b3, purple);
+  background: linear-gradient(to bottom right, #0056b3, purple);
   transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /***gallery section end***/
+
+/***light box start***/
+.lightbox {
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.lightbox .wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  padding: 20px;
+  max-width: 850px;
+  background: #fff;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .photographer {
+  color: #333;
+}
+
+header .photographer i {
+  font-size: 1.7rem;
+}
+
+header .photographer span {
+  font-size: 1.2rem;
+}
+
+header .buttons i {
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  line-height: 40px;
+  background: linear-gradient(to bottom right, purple, #007bff);
+  font-size: 1.2rem;
+  display: inline-block;
+}
+
+header .buttons i:hover {
+  background: linear-gradient(to bottom right, #0056b3, purple);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.buttons i:last-child {
+  margin-left: 10px;
+  background: #6c757d;
+}
+.buttons i:last-child:hover {
+  background: #6c757d;
+}
+.preview-img {
+  display: flex;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  justify-content: center;
+}
+
+.wrapper .preview-img .img {
+  max-height: 65vh;
+  max-width: 90vh;
+}
+
+.preview-img .img img {
+  width: 100%;
+  object-fit: contain;
+  height: 100%;
+}
+
+/***light box end***/
 
 /***media query start***/
 @media (max-width: 767px) {
