@@ -1,4 +1,4 @@
-/*Google font - poppins*/
+/***Google font - poppins***/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
   margin: 0;
@@ -6,8 +6,11 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+section {
+  padding: 70px 100px;
+}
 
-/***hero section style***/
+/***hero section start***/
 .image-gallery-hero {
   height: 50vh;
   position: relative;
@@ -56,12 +59,147 @@
   transform: translateY(-50%);
 }
 
+input,
+button,
+i {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
 .image-gallery-hero input {
   width: 100%;
   height: 100%;
-  outline: none;
-  border: none;
   font-size: 1.1rem;
   padding-left: 55px;
-  border-radius: 5px;
 }
+/***hero section end***/
+
+/***gallery section start***/
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.gallery .card {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+.gallery .card .details {
+  position: absolute;
+  bottom: -100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  transition: bottom 0.1s ease;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+}
+.gallery .card:hover .details {
+  bottom: 0;
+}
+.card .details .photographer {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.details .photographer i {
+  font-size: 1.4rem;
+  margin-right: 10px;
+}
+.details .photographer span {
+  font-size: 1.05rem;
+}
+
+.card .details button {
+  cursor: pointer;
+  padding: 3px 8px;
+  font-size: 1.3rem;
+  background: #fff;
+  color: gray;
+}
+
+.gallery .card .like-collection {
+  position: absolute;
+  top: -100px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  transition: bottom 0.1s ease;
+  justify-content: space-between;
+}
+.gallery .card:hover .like-collection {
+  top: 8px;
+}
+.gallery .card .like-collection button {
+  cursor: pointer;
+  color: gray;
+  padding: 3px 8px;
+  font-size: 1.5rem;
+  background: #fff;
+  margin: 0.3rem;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.button-container .load-more {
+  margin: 0 0 50px;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  background-color: #007bff;
+  background-image: linear-gradient(to bottom right, purple, #007bff);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s ease-in-out;
+}
+.button-container .load-more:hover {
+  background-color: linear-gradient(to bottom right, #0056b3, purple);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/***gallery section end***/
+
+/***media query start***/
+@media (max-width: 767px) {
+  .image-gallery-hero input {
+    font-size: 1rem;
+  }
+  .gallery {
+    padding: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .image-gallery-hero input {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-gallery-hero {
+    height: 60vh;
+  }
+
+  .image-gallery-hero p {
+    font-size: 1rem;
+  }
+  .image-gallery-hero input {
+    font-size: 0.7rem;
+  }
+
+  .gallery {
+    padding: 20px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+/***media query end***/
