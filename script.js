@@ -4,6 +4,9 @@ const searchInput = document.querySelector('.search-box input');
 const lightBox = document.querySelector('.lightbox');
 const closeBtn = document.querySelector('.uil-times');
 const downloadImgBtn = lightBox.querySelector('.uil-import');
+const likeBtn = lightBox.querySelector('.fa-heart');
+
+const likedImages = new Set(); // Using Set to ensure uniqueness
 
 // Pexels API key
 const apiKey = 'TYDuclkjPcP9tjSLNZp1Qx8qvGXdHnBj9m0lxoi0nb6QdZ2MWQN6jaI1';
@@ -25,23 +28,73 @@ const downloadImg = (imgUrl) => {
     .catch(() => alert('Failed to download image'));
 };
 
-const likeImg = (icon) => {
+const likeImg = (icon, id) => {
   // Change the heart icon when the user likes an image
-  if (icon.classList.contains('fa-solid')) {
+  const stringId = String(id);
+
+  // If the image is already liked, unlike it
+  if (likedImages.has(stringId)) {
     icon.classList.remove('fa-solid');
     icon.classList.add('fa-regular');
+    likedImages.delete(stringId);
   } else {
     icon.classList.remove('fa-regular');
     icon.classList.add('fa-solid');
+    likedImages.add(stringId);
+  }
+
+  updateLikeState(stringId);
+};
+
+const updateLikeState = (id) => {
+  const stringId = String(id);
+
+  // Update the like state of the gallery icon
+  const galleryIcon = document.querySelector(
+    `.gallery .fa-heart[data-id="${stringId}"]`
+  );
+
+  if (galleryIcon) {
+    if (likedImages.has(stringId)) {
+      galleryIcon.classList.remove('fa-regular');
+      galleryIcon.classList.add('fa-solid');
+    } else {
+      galleryIcon.classList.remove('fa-solid');
+      galleryIcon.classList.add('fa-regular');
+    }
+  }
+
+  // Update the like state of the lightbox icon
+  if (lightBox.classList.contains('show')) {
+    const lightboxIcon = lightBox.querySelector('.fa-heart');
+    if (lightboxIcon && lightboxIcon.getAttribute('data-id') === stringId) {
+      if (likedImages.has(stringId)) {
+        lightboxIcon.classList.remove('fa-regular');
+        lightboxIcon.classList.add('fa-solid');
+      } else {
+        lightboxIcon.classList.remove('fa-solid');
+        lightboxIcon.classList.add('fa-regular');
+      }
+    }
   }
 };
 
-const showLightbox = (name, img, alt) => {
+const showLightbox = (name, img, alt, id) => {
   // Show the lightbox when the user clicks on an image
   lightBox.querySelector('img').src = img;
   lightBox.querySelector('img').alt = alt;
   lightBox.querySelector('span').innerText = name;
   downloadImgBtn.setAttribute('data-img', img);
+  likeBtn.setAttribute('data-id', id);
+
+  if (likedImages.has(id)) {
+    likeBtn.classList.remove('fa-regular');
+    likeBtn.classList.add('fa-solid');
+  } else {
+    likeBtn.classList.remove('fa-solid');
+    likeBtn.classList.add('fa-regular');
+  }
+
   lightBox.classList.add('show');
   document.body.style.overflow = 'hidden';
 };
@@ -56,7 +109,7 @@ const generateHTML = (images) => {
   imageWrapper.innerHTML += images
     .map(
       (img) =>
-        `<div class="card" onclick="showLightbox('${img.photographer}','${img.src.large}', '${img.alt}')">
+        `<div class="card" onclick="showLightbox('${img.photographer}','${img.src.large}', '${img.alt}', '${img.id}')">
         <img src="${img.src.large}" alt="${img.alt}" loading="lazy" />
         <div class="details">
           <div class="photographer">
@@ -68,8 +121,7 @@ const generateHTML = (images) => {
             </button>
         </div>
         <div class="like-collection">
-          <button><i onclick="likeImg(this); event.stopPropagation();" class="fa-regular fa-heart heart-color"></i></button>
-          <button><i class="uil uil-folder-open"></i></button>
+          <button><i onclick="likeImg(this,${img.id}); event.stopPropagation();" data-id="${img.id}" class="fa-regular fa-heart"></i></button>
         </div>
       </div>`
     )
@@ -136,3 +188,8 @@ closeBtn.addEventListener('click', hideLightbox);
 downloadImgBtn.addEventListener('click', (e) =>
   downloadImg(e.target.dataset.img)
 );
+
+likeBtn.addEventListener('click', (e) => {
+  const id = e.target.getAttribute('data-id');
+  likeImg(likeBtn, id);
+});

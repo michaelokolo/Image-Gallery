@@ -10,9 +10,45 @@ section {
   padding: 70px 100px;
 }
 
+/***navbar start***/
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 100px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+
+.navbar .logo {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+}
+.navbar .logo img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.navbar .nav-links {
+  display: flex;
+  align-items: center;
+}
+.navbar .nav-links li {
+  list-style: none;
+}
+.navbar .nav-links i {
+  font-size: 1.5rem;
+  margin-right: 10px;
+  list-style: none;
+}
 /***hero section start***/
 .image-gallery-hero {
-  height: 50vh;
+  height: 70vh;
   position: relative;
   display: flex;
   justify-content: center;
@@ -121,7 +157,7 @@ i {
   background: #fff;
   color: gray;
 }
-/*****like collection start******/
+
 .like-collection .fa-solid {
   color: #c11c84;
   font-size: 1.3rem;
@@ -241,6 +277,16 @@ header .buttons i {
   display: inline-block;
 }
 
+header .buttons .fa-solid {
+  color: #c11c84;
+  font-size: 1.3rem;
+}
+
+header .buttons .fa-regular {
+  color: #fff;
+  font-size: 1.3rem;
+}
+
 header .buttons i:hover {
   background: linear-gradient(to bottom right, #0056b3, purple);
   transform: scale(1.1);
@@ -276,6 +322,10 @@ header .buttons i:hover {
 
 /***media query start***/
 @media (max-width: 767px) {
+  .image-gallery-hero h1 {
+    margin-top: 100px;
+    font-size: 1.7rem;
+  }
   .image-gallery-hero input {
     font-size: 1rem;
   }
@@ -284,11 +334,19 @@ header .buttons i:hover {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
   .image-gallery-hero input {
-    font-size: 0.7rem;
+    font-size: 1rem;
+  }
+
+  .navbar {
+    padding: 10px 70px;
   }
 }
 
 @media (max-width: 480px) {
+  .image-gallery-hero h1 {
+    margin-top: 100px;
+    font-size: 1.7rem;
+  }
   .image-gallery-hero {
     height: 60vh;
   }
@@ -297,12 +355,15 @@ header .buttons i:hover {
     font-size: 1rem;
   }
   .image-gallery-hero input {
-    font-size: 0.7rem;
+    font-size: 1rem;
   }
 
   .gallery {
     padding: 20px;
     grid-template-columns: repeat(1, 1fr);
+  }
+  .navbar {
+    padding: 10px 50px;
   }
 }
 /***media query end***/
