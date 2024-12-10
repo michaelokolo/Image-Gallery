@@ -25,6 +25,17 @@ const downloadImg = (imgUrl) => {
     .catch(() => alert('Failed to download image'));
 };
 
+const likeImg = (icon) => {
+  // Change the heart icon when the user likes an image
+  if (icon.classList.contains('fa-solid')) {
+    icon.classList.remove('fa-solid');
+    icon.classList.add('fa-regular');
+  } else {
+    icon.classList.remove('fa-regular');
+    icon.classList.add('fa-solid');
+  }
+};
+
 const showLightbox = (name, img, alt) => {
   // Show the lightbox when the user clicks on an image
   lightBox.querySelector('img').src = img;
@@ -57,7 +68,7 @@ const generateHTML = (images) => {
             </button>
         </div>
         <div class="like-collection">
-          <button><i class="uil uil-heart-alt"></i></button>
+          <button><i onclick="likeImg(this); event.stopPropagation();" class="fa-regular fa-heart heart-color"></i></button>
           <button><i class="uil uil-folder-open"></i></button>
         </div>
       </div>`

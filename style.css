@@ -121,6 +121,16 @@ i {
   background: #fff;
   color: gray;
 }
+/*****like collection start******/
+.like-collection .fa-solid {
+  color: #c11c84;
+  font-size: 1.3rem;
+}
+
+.like-collection .fa-regular {
+  color: gray;
+  font-size: 1.3rem;
+}
 
 .gallery .card .like-collection {
   position: absolute;
