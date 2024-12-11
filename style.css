@@ -6,8 +6,13 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
 section {
   padding: 70px 100px;
+}
+
+.dark {
+  background-color: #000;
 }
 
 /***navbar start***/
@@ -15,24 +20,33 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 100px;
-  background-color: #fff;
+  padding: 15px 100px;
+  background: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: fixed;
   width: 100%;
   z-index: 3;
 }
 
+.dark .navbar {
+  background: #000;
+  color: #fff;
+}
+
 .navbar .logo {
   font-size: 1.8rem;
   font-weight: 600;
   color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .navbar .logo img {
   width: 50px;
   height: 50px;
   object-fit: cover;
   border-radius: 50%;
+  border: solid 1px gray;
 }
 .navbar .nav-links {
   display: flex;
@@ -40,11 +54,23 @@ section {
 }
 .navbar .nav-links li {
   list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .navbar .nav-links i {
   font-size: 1.5rem;
   margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   list-style: none;
+  padding: 10px;
+  cursor: pointer;
+  border: solid 1px gray;
+  border-radius: 50%;
 }
 /***hero section start***/
 .image-gallery-hero {
@@ -122,7 +148,16 @@ i {
   display: flex;
   overflow: hidden;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
+.gallery .card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .gallery .card .details {
   position: absolute;
   bottom: -100px;
@@ -324,11 +359,15 @@ header .buttons i:hover {
 
 footer {
   background: linear-gradient(to bottom right, #03254a, purple);
+  /*background: rgb(10, 10, 10);*/
   color: #fff;
   font-family: Arial, sans-serif;
   padding: 40px 20px;
   position: relative;
   min-height: 200px;
+}
+.dark footer {
+  background: #0b0b0b;
 }
 
 .footer-content {

@@ -6,6 +6,7 @@ const closeBtn = document.querySelector('.uil-times');
 const downloadImgBtn = lightBox.querySelector('.uil-import');
 const likeBtn = lightBox.querySelector('.fa-heart');
 const year = document.querySelector('.footer-copyright span');
+const darkModeBtn = document.querySelector('.navbar .nav-links i');
 
 // Update the year in the footer
 const date = new Date();
@@ -32,6 +33,19 @@ const downloadImg = (imgUrl) => {
       a.click();
     })
     .catch(() => alert('Failed to download image'));
+};
+
+const toggleDarkMode = () => {
+  // Toggle dark mode
+  const body = document.body;
+  body.classList.toggle('dark');
+  if (body.classList.contains('dark')) {
+    darkModeBtn.classList.remove('fa-moon');
+    darkModeBtn.classList.add('fa-sun');
+  } else {
+    darkModeBtn.classList.remove('fa-sun');
+    darkModeBtn.classList.add('fa-moon');
+  }
 };
 
 const likeImg = (icon, id) => {
@@ -188,6 +202,8 @@ const loadSearchImages = (e) => {
   }
 };
 
+
+// Event listeners
 loadMoreBtn.addEventListener('click', loadMoreImages);
 searchInput.addEventListener('keyup', loadSearchImages);
 closeBtn.addEventListener('click', hideLightbox);
@@ -198,4 +214,45 @@ downloadImgBtn.addEventListener('click', (e) =>
 likeBtn.addEventListener('click', (e) => {
   const id = e.target.getAttribute('data-id');
   likeImg(likeBtn, id);
+});
+darkModeBtn.addEventListener('click', toggleDarkMode);
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Lazy load images
+  const observerOptions = {
+    root: null,
+    threshold: 0.1,
+  };
+
+  const observerCallback = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  const observeCards = () => {
+    const cards = document.querySelectorAll('.card:not(.observed)');
+    cards.forEach((card) => {
+      card.classList.add('observed');
+      observer.observe(card);
+    });
+  };
+
+  
+  observeCards();
+
+  const mutationObserver = new MutationObserver(() => {
+    observeCards();
+  });
+
+  mutationObserver.observe(document.querySelector('.gallery'), {
+    childList: true,
+    subtree: false,
+  });
 });
