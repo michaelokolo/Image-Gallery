@@ -5,8 +5,14 @@ const lightBox = document.querySelector('.lightbox');
 const closeBtn = document.querySelector('.uil-times');
 const downloadImgBtn = lightBox.querySelector('.uil-import');
 const likeBtn = lightBox.querySelector('.fa-heart');
+const year = document.querySelector('.footer-copyright span');
 
-const likedImages = new Set(); // Using Set to ensure uniqueness
+// Update the year in the footer
+const date = new Date();
+year.innerText = date.getFullYear();
+
+// Store liked images
+const likedImages = new Set();
 
 // Pexels API key
 const apiKey = 'TYDuclkjPcP9tjSLNZp1Qx8qvGXdHnBj9m0lxoi0nb6QdZ2MWQN6jaI1';
