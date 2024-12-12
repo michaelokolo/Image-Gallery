@@ -11,6 +11,7 @@ Discover our curated image gallery with high-quality visuals, including breathta
 ## Table of Contents
 
 - [Features](#features)
+- [Technologies Used](#technologies-used)
 - [Local Setup](#local-setup)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -26,18 +27,38 @@ Discover our curated image gallery with high-quality visuals, including breathta
 - Responsive design for mobile and desktop
 - Accessible and SEO-friendly
 
+## Technologies Used
+
+- **HTML5**: For structuring the content of the webpage.
+- **CSS3**: For styling the webpage, including layout, colors, and fonts.
+- **JavaScript**: For adding interactivity to the webpage.
+- **Font Awesome**: For icons used in the navigation bar and other UI elements.
+- **Pexels API**: For fetching high-quality images.
+
 ## Local Setup
 
 If you already have the HTML, CSS, and JavaScript files on your local device, follow these steps to set up the project:
 
-1. Ensure all files are in the same directory:
-2. Open `index.html` in your preferred web browser.
+1. Ensure all files are in the same directory structure as follows:
+
+/your-project-directory
+├── index.html
+├── style.css
+├── script.js
+└── images
+    ├── image-gallery-hero.png
+    ├── gallery-icon.png
+    ├── light-mode-screenshot.png
+    └── dark-mode-screenshot.png
+
+3. Open `index.html` in your preferred web browser.
 
 ## Installation
 
 1. Clone the repository:
-2. Navigate to the project directory:
-3. Open `index.html` in your preferred web browser.
+   `https://github.com/michaelokolo/Image-Gallery.git`
+3. Navigate to the project directory:
+4. Open `index.html` in your preferred web browser.
 
 ## Usage
 
