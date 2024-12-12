@@ -6,7 +6,7 @@ Discover our curated image gallery with high-quality visuals, including breathta
 ![Light Mode](images/light-mode-screenshot.JPG)
 
 ### Dark Mode
-
+![Dark Mode](images/dark-mode-screenshot.JPG)
 
 ## Table of Contents
 
