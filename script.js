@@ -1,3 +1,4 @@
+// Purpose: This file contains the JavaScript code for the image gallery.
 const imageWrapper = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
 const searchInput = document.querySelector('.search-box input');
@@ -6,7 +7,16 @@ const closeBtn = document.querySelector('.uil-times');
 const downloadImgBtn = lightBox.querySelector('.uil-import');
 const likeBtn = lightBox.querySelector('.fa-heart');
 const year = document.querySelector('.footer-copyright span');
-const darkModeBtn = document.querySelector('.navbar .nav-links i');
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const navLinks = document.getElementById('primary-navigation');
+const darkModeToggle = document.querySelector('.dark-mode-toggle');
+
+hamburgerMenu.addEventListener('click', () => {
+  // Toggle the menu when the user clicks the hamburger menu
+  const isExpanded = hamburgerMenu.getAttribute('aria-expanded') === 'true';
+  hamburgerMenu.setAttribute('aria-expanded', !isExpanded);
+  navLinks.classList.toggle('open');
+});
 
 // Update the year in the footer
 const date = new Date();
@@ -40,11 +50,11 @@ const toggleDarkMode = () => {
   const body = document.body;
   body.classList.toggle('dark');
   if (body.classList.contains('dark')) {
-    darkModeBtn.classList.remove('fa-moon');
-    darkModeBtn.classList.add('fa-sun');
+    darkModeToggle.querySelector('i').classList.remove('fa-moon');
+    darkModeToggle.querySelector('i').classList.add('fa-sun');
   } else {
-    darkModeBtn.classList.remove('fa-sun');
-    darkModeBtn.classList.add('fa-moon');
+    darkModeToggle.querySelector('i').classList.remove('fa-sun');
+    darkModeToggle.querySelector('i').classList.add('fa-moon');
   }
 };
 
@@ -124,6 +134,12 @@ const hideLightbox = () => {
   document.body.style.overflow = 'auto';
 };
 
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape' || event.keyCode === 27) {
+    hideLightbox();
+  }
+});
+
 const generateHTML = (images) => {
   // Append images to the gallery
   imageWrapper.innerHTML += images
@@ -202,7 +218,6 @@ const loadSearchImages = (e) => {
   }
 };
 
-
 // Event listeners
 loadMoreBtn.addEventListener('click', loadMoreImages);
 searchInput.addEventListener('keyup', loadSearchImages);
@@ -215,8 +230,7 @@ likeBtn.addEventListener('click', (e) => {
   const id = e.target.getAttribute('data-id');
   likeImg(likeBtn, id);
 });
-darkModeBtn.addEventListener('click', toggleDarkMode);
-
+darkModeToggle.addEventListener('click', toggleDarkMode);
 
 document.addEventListener('DOMContentLoaded', () => {
   // Lazy load images
@@ -244,7 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  
   observeCards();
 
   const mutationObserver = new MutationObserver(() => {
