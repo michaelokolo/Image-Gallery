@@ -11,6 +11,7 @@ Discover our curated image gallery with high-quality visuals, including breathta
 ## Table of Contents
 
 - [Features](#features)
+- [Local Setup](#local-setup)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -24,6 +25,13 @@ Discover our curated image gallery with high-quality visuals, including breathta
 - Dark mode toggle
 - Responsive design for mobile and desktop
 - Accessible and SEO-friendly
+
+## Local Setup
+
+If you already have the HTML, CSS, and JavaScript files on your local device, follow these steps to set up the project:
+
+1. Ensure all files are in the same directory:
+2. Open `index.html` in your preferred web browser.
 
 ## Installation
 
