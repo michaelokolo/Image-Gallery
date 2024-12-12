@@ -152,16 +152,18 @@
     </header>
     <!--Hero Section end-->
 
-    <section id="gallery" class="gallery"></section>
+    <section id="gallery" class="gallery" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading" class="visually-hidden">Gallery</h2>
+    </section>
     <div class="button-container">
       <button class="load-more">Load More</button>
     </div>
 
     <!--Footer Section start-->
-    <footer>
+    <footer aria-labelledby="footer-heading">
       <div class="footer-content">
         <img src="images/gallery-icon.png" alt="Gallery Icon" />
-        <h2>Image Gallery</h2>
+        <h2 id="footer-heading">Image Gallery</h2>
         <p>
           Discover our curated image gallery with high-quality visuals,
           including breathtaking landscapes and creative concepts, designed to
@@ -176,32 +178,35 @@
         </ul>
 
         <div class="footer-legal">
-          <ul class="social-icons">
+          <ul class="social-icons" aria-label="Social Media Links">
             <li>
-              <a href="#">
-                <i class="fa-brands fa-facebook"></i>
+              <a href="#" aria-label="Facebook">
+                <i class="fa-brands fa-facebook" aria-hidden="true"></i>
               </a>
             </li>
             <li>
-              <a href="#">
-                <i class="fa-brands fa-twitter"></i>
+              <a href="#" aria-label="Twitter">
+                <i class="fa-brands fa-twitter" aria-hidden="true"></i>
               </a>
             </li>
             <li>
-              <a href="#">
-                <i class="fa-brands fa-instagram"></i>
+              <a href="#" aria-label="Instagram">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
               </a>
             </li>
             <li>
-              <a href="#">
-                <i class="fa-brands fa-pinterest"></i>
+              <a href="#" aria-label="Pinterest">
+                <i class="fa-brands fa-pinterest" aria-hidden="true"></i>
               </a>
             </li>
           </ul>
         </div>
       </div>
       <div class="footer-copyright">
-        <p>&copy; <span></span> Image Gallery. All rights reserved.</p>
+        <p>
+          &copy; <span id="current-year"></span> Image Gallery. All rights
+          reserved.
+        </p>
       </div>
     </footer>
 

@@ -42,7 +42,6 @@ section {
   position: fixed;
   width: 100%;
   z-index: 3;
-  
 }
 
 .navbar .logo img {
@@ -405,6 +404,18 @@ header .buttons i {
   background: linear-gradient(to bottom right, purple, #007bff);
   font-size: 1.2rem;
   display: inline-block;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 header .buttons .fa-solid {

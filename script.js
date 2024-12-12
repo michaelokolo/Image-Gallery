@@ -145,19 +145,19 @@ const generateHTML = (images) => {
   imageWrapper.innerHTML += images
     .map(
       (img) =>
-        `<div class="card" onclick="showLightbox('${img.photographer}','${img.src.large}', '${img.alt}', '${img.id}')">
+        `<div class="card" role="button" tabindex="0" aria-label="View image by ${img.photographer}" onclick="showLightbox('${img.photographer}','${img.src.large}', '${img.alt}', '${img.id}')">
         <img src="${img.src.large}" alt="${img.alt}" loading="lazy" />
         <div class="details">
           <div class="photographer">
-            <i class="uil uil-camera"></i>
+            <i class="uil uil-camera" aria-hidden="true"></i>
             <span>${img.photographer}</span>
           </div>
-          <button onclick=downloadImg("${img.src.large}");event.stopPropagation();>
-                <i class="uil uil-import"></i>
+          <button aria-label="Download image" onclick=downloadImg("${img.src.large}");event.stopPropagation();>
+                <i class="uil uil-import" aria-hidden="true"></i>
             </button>
         </div>
         <div class="like-collection">
-          <button><i onclick="likeImg(this,${img.id}); event.stopPropagation();" data-id="${img.id}" class="fa-regular fa-heart"></i></button>
+          <button aria-label="Like image"><i onclick="likeImg(this,${img.id}); event.stopPropagation();" data-id="${img.id}" class="fa-regular fa-heart" aria-hidden="true"></i></button>
         </div>
       </div>`
     )
