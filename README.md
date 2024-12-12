@@ -2,6 +2,12 @@
 
 Discover our curated image gallery with high-quality visuals, including breathtaking landscapes and creative concepts, designed to inspire creativity and captivate your imagination.
 
+### Light Mode
+![Light Mode](images/light-mode-screenshot.png)
+
+### Dark Mode
+![Dark Mode](images/dark-mode-screenshot.png)
+
 ## Table of Contents
 
 - [Features](#features)
