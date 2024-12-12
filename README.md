@@ -6,7 +6,7 @@ Discover our curated image gallery with high-quality visuals, including breathta
 ![Light Mode](images/light-mode-screenshot.png)
 
 ### Dark Mode
-![Dark Mode](images/dark-mode-screenshot.png)
+![Dark Mode]([images/dark-mode-screenshot.png](https://github.com/michaelokolo/Image-Gallery/blob/main/images/dark-mode-screenshot.JPG))
 
 ## Table of Contents
 
