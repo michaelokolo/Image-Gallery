@@ -39,19 +39,9 @@ Discover our curated image gallery with high-quality visuals, including breathta
 
 If you already have the HTML, CSS, and JavaScript files on your local device, follow these steps to set up the project:
 
-1. Ensure all files are in the same directory structure as follows:
+1. Ensure all files are in the same directory:
 
-/your-project-directory
-├── index.html
-├── style.css
-├── script.js
-└── images
-    ├── image-gallery-hero.png
-    ├── gallery-icon.png
-    ├── light-mode-screenshot.png
-    └── dark-mode-screenshot.png
-
-3. Open `index.html` in your preferred web browser.
+2. Open `index.html` in your preferred web browser.
 
 ## Installation
 
